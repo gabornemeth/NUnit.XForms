@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NUnit.XForms.TestRunnerPage"
+             xmlns:common="clr-namespace:NUnit.XForms.Common;assembly=NUnit.XForms"
+             Title="Test runner">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+    <Button Grid.Row="0" Text="Run tests" Command="{Binding RunCommand}" IsEnabled="{Binding IsRunning, Converter={x:Static common:ConverterResources.BoolInverseConverter}}" />
+    <Grid Grid.Row="1">
+      <ListView ItemsSource="{Binding Tests}">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <ViewCell.View>
+                <StackLayout Orientation="Horizontal">
+                  <Switch IsToggled="{Binding IsSelected, Mode=TwoWay}" />
+                  <Grid>
+                    <Label Text="{Binding Name}" VerticalOptions="Center">
+                    </Label>
+                    <Grid.GestureRecognizers>
+                      <TapGestureRecognizer Command="{Binding ShowCommand}" />
+                    </Grid.GestureRecognizers>
+                  </Grid>
+                </StackLayout>
+              </ViewCell.View>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+      <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Orientation="Vertical"
+                   IsVisible="{Binding IsRunning}">
+        <ActivityIndicator IsRunning="{Binding IsRunning}" />
+        <Label Text="Running tests" />
+      </StackLayout>
+    </Grid>
+    <StackLayout Grid.Row="2" Orientation="Horizontal">
+      <Button Text="Select all" Command="{Binding SelectAllCommand}" />
+      <Button Text="Deselect all" Command="{Binding DeselectAllCommand}" />
+    </StackLayout>
+  </Grid>
+</ContentPage>

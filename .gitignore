@@ -1,0 +1,17 @@
+packages/
+NUnit.XForms/bin/
+NUnit.XForms/obj/
+samples/Sample.Android/obj/
+samples/Sample.WinPhone/obj/
+samples/Sample.Android/bin/
+samples/Sample.WinPhone.SL/Bin/
+lib/
+samples/Sample.WinPhone/bin/Debug/Xamarin.Forms.Xaml.xml
+samples/Sample.WinPhone/bin/
+samples/Sample.WinPhone.SL/obj/
+samples/Sample.Android/Sample.Android/obj/
+samples/Sample.WinPhone.SL/Sample.WinPhone.SL/obj/
+samples/Sample.Android/Sample.Android/bin/
+samples/Sample.WinPhone.SL/Sample.WinPhone.SL/Bin/
+samples/Sample.WinPhone/Sample.WinPhone/obj/
+samples/Sample.WinPhone/Sample.WinPhone/bin/

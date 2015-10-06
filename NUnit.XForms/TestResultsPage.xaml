@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NUnit.XForms.TestResultsPage"
+             xmlns:common="clr-namespace:NUnit.XForms.Common;assembly=NUnit.XForms"
+             Title="Test results">
+  <StackLayout Orientation="Vertical">
+    <ListView ItemsSource="{Binding}" RowHeight="100">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <ViewCell.View>
+              <StackLayout Orientation="Vertical">
+                <Label Text="{Binding Name}" HorizontalOptions="FillAndExpand" />
+                <Label Text="{Binding Success, Converter={x:Static common:ConverterResources.BoolToTestResultConverter}}"
+                       TextColor="{Binding Success, Converter={x:Static common:ConverterResources.BoolToTestResultColorConverter}}"/>
+                <Label Text="{Binding Details}" />
+              </StackLayout>
+            </ViewCell.View>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
+</ContentPage>
