@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://github.com/gabornemeth/NUnit.XForms/blob/master/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/gabornemeth/NUnit.XForms/</projectUrl>
+<!--    <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>First open source version.</releaseNotes>
+    <copyright>Copyright - Gabor Nemeth, 2015</copyright>
+    <tags>nunit xamarin forms</tags>
+  </metadata>
+</package>
