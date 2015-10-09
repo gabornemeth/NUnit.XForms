@@ -49,6 +49,10 @@ See the samples for further code. All samples have been built using Visual Studi
 
 Being a PCL (Portable Class Library), NUnit.XForms should work on iOS also, but has not been tested. 
 
+### Nuget
+
+Can also be grabbed from [Nuget] (https://www.nuget.org/packages/NUnit.XForms/).
+
 #### Known issues
 * SetupFixture, TearDownFixture not supported yet
 
