@@ -82,10 +82,13 @@ namespace NUnit.XForms
             Results.Clear();
             try
             {
-                await Task.Run(() => { _fixture.Run(); });
-                foreach (var test in _fixture.Tests)
+                foreach (var test in _tests)
                 {
-                    Results.Add(test.Result);
+                    await test.RunAsync();
+                    foreach (var result in test.Results)
+                    {
+                        Results.Add(result);
+                    }
                 }
             }
             catch (Exception ex)

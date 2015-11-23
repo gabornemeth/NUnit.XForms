@@ -16,3 +16,5 @@ samples/Sample.WinPhone.SL/Sample.WinPhone.SL/Bin/
 samples/Sample.WinPhone/Sample.WinPhone/obj/
 samples/Sample.WinPhone/Sample.WinPhone/bin/
 *.nupkg
+Samples/Sample.iOS/obj/
+Samples/Sample.iOS/bin/
