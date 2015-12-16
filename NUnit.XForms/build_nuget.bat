@@ -1,1 +1,1 @@
-nuget pack NUnit.XForms.csproj -IncludeReferencedProjects -Prop Configuration=Release
+..\.nuget\nuget pack NUnit.XForms.csproj -IncludeReferencedProjects -Prop Configuration=Release

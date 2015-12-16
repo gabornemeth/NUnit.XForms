@@ -87,7 +87,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <Import Project="C:\Program Files\Babel\MSBuild\Babel.Build.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
@@ -96,60 +95,6 @@
     <Error Condition="!Exists('..\packages\Xamarin.Forms.1.5.0.6447\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Forms.1.5.0.6447\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
   </Target>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Choose>
-    <When Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-      <PropertyGroup>
-        <EnableObfuscation>false</EnableObfuscation>
-      </PropertyGroup>
-    </When>
-    <When Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' Or '$(Configuration)|$(Platform)' == 'ReleaseTrial|AnyCPU'">
-      <PropertyGroup>
-        <EnableObfuscation>true</EnableObfuscation>
-        <BabelOutputFile>NUnit.XForms.dll</BabelOutputFile>
-        <CleanAttributes>\[mscorlib\]System.Runtime.CompilerServices.CompilerGeneratedAttribute;\[mscorlib\]System.Diagnostics.DebuggerDisplayAttribute;\[mscorlib\]System.Diagnostics.DebuggerBrowsableAttribute;\[mscorlib\]System.Diagnostics.DebuggerNonUserCodeAttribute;\[mscorlib\]System.Diagnostics.DebuggerHiddenAttribute;\[mscorlib\]System.Diagnostics.DebuggerStepThroughAttribute;False</CleanAttributes>
-        <ConstRemoval>false</ConstRemoval>
-        <ControlFlowObfuscation>true;token=false;underflow=false;goto=true;if=false;switch=false;case=false;call=false;value=false</ControlFlowObfuscation>
-        <CopyAttributes>True</CopyAttributes>
-        <DeadCodeElimination>False</DeadCodeElimination>
-        <DisgregateRemoval>false</DisgregateRemoval>
-        <DynamicProxy>None</DynamicProxy>
-        <EmitInvalidOpcodes>false</EmitInvalidOpcodes>
-        <EnableObfuscationAgent>true</EnableObfuscationAgent>
-        <EnumRemoval>false</EnumRemoval>
-        <FlattenNamespaces>True</FlattenNamespaces>
-        <GenerateDebug>false</GenerateDebug>
-        <GenerateLogFile>false</GenerateLogFile>
-        <GenerateMapOutFile>false</GenerateMapOutFile>
-        <ILIterations>3</ILIterations>
-        <InlineExpansion>false</InlineExpansion>
-        <Instrument>false</Instrument>
-        <InstrumentEmptyMethods>true</InstrumentEmptyMethods>
-        <Internalize>false</Internalize>
-        <ModuleInitializer>false</ModuleInitializer>
-        <MsilEncryption>False</MsilEncryption>
-        <ObfuscateEvents>true</ObfuscateEvents>
-        <ObfuscateFields>true</ObfuscateFields>
-        <ObfuscateMethods>true</ObfuscateMethods>
-        <ObfuscateProperties>true</ObfuscateProperties>
-        <ObfuscateTypes>true</ObfuscateTypes>
-        <ObfuscateXaml>false</ObfuscateXaml>
-        <OverloadedRenaming>false</OverloadedRenaming>
-        <ResourceEncryption>false</ResourceEncryption>
-        <SealClasses>false</SealClasses>
-        <SearchSatelliteAssemblies>true</SearchSatelliteAssemblies>
-        <ShowLogo>true</ShowLogo>
-        <ShowStatistics>true</ShowStatistics>
-        <SkipFile>System\..%2A;Microsoft\..%2A</SkipFile>
-        <StringEncryption>True</StringEncryption>
-        <SuppressIldasm>true</SuppressIldasm>
-        <SuppressReflection>false</SuppressReflection>
-        <UnicodeNormalization>True</UnicodeNormalization>
-        <ValueEncryption>false</ValueEncryption>
-        <VerboseLevel>1</VerboseLevel>
-        <VirtualFunctions>true</VirtualFunctions>
-      </PropertyGroup>
-    </When>
-  </Choose>
   <Import Project="..\packages\Xamarin.Forms.1.5.0.6447\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.5.0.6447\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
