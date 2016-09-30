@@ -70,10 +70,12 @@ namespace NUnit.XForms
         {
             if (methodInfo.ReturnParameter.ParameterType == typeof(void))
             {
+                // sync test
                 methodInfo.Invoke(obj, null);
             }
             else if (methodInfo.ReturnParameter.ParameterType == typeof(Task))
             {
+                // async test - wait for the task to finish
                 var task = methodInfo.Invoke(obj, null) as Task;
                 if (task != null)
                     task.Wait();
