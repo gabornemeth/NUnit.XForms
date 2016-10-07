@@ -1,5 +1,7 @@
 # NUnit.XForms
 
+[![Build status](https://ci.appveyor.com/api/projects/status/u2cfbc7cnlahj8b8?svg=true)](https://ci.appveyor.com/project/gabornemeth/nunit-xforms)
+
 NUnit.XForms is a test runner for Xamarin Forms applications. It gives you much more flexibility for running tests, than the built-in Xamarin NUnitLite test project. It works with both NUnit and NUnitLite.
 
 To use NUnit.XForms, you should be familiar with Xamarin Forms: http://developer.xamarin.com/guides/cross-platform/xamarin-forms/
