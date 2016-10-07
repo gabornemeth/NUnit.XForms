@@ -24,7 +24,7 @@ namespace NUnit.XForms
         /// <summary>
         /// Tesztfuttatás eredményei
         /// </summary>
-        public ObservableCollection<TestResult> Results { get; protected set; }
+        public ObservableCollection<TestResultInfo> Results { get; protected set; }
 
         protected TestRunnerViewModel Parent { get; set; }
 
@@ -174,7 +174,7 @@ namespace NUnit.XForms
 
         public TestRunnerViewModel()
         {
-            Results = new ObservableCollection<TestResult>();
+            Results = new ObservableCollection<TestResultInfo>();
             _isSelected = true;
         }
     }

@@ -9,5 +9,6 @@ namespace NUnit.XForms
         public const string Test = "NUnit.Framework.TestAttribute";
         public const string SetUp = "NUnit.Framework.SetUpAttribute";
         public const string TearDown = "NUnit.Framework.TearDownAttribute";
+        public const string Ignore = "NUnit.Framework.IgnoreAttribute";
     }
 }

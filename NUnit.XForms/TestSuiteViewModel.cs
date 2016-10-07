@@ -39,7 +39,7 @@ namespace NUnit.XForms
             _fixtures = new List<TestFixtureViewModel>();
             foreach (var fixture in runner.Fixtures)
                 _fixtures.Add(new TestFixtureViewModel(fixture, this));
-            Results = new ObservableCollection<TestResult>();
+            Results = new ObservableCollection<TestResultInfo>();
         }
     }
 }

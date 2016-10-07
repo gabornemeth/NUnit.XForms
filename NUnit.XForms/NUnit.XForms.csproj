@@ -39,6 +39,7 @@
   <ItemGroup>
     <Compile Include="Test.cs" />
     <Compile Include="TestAttributes.cs" />
+    <Compile Include="TestExtensions.cs" />
     <Compile Include="TestFixture.cs" />
     <Compile Include="TestHelper.cs" />
     <Compile Include="TestResult.cs" />
@@ -50,8 +51,8 @@
     <Compile Include="TestViewModel.cs" />
     <Compile Include="Common\ConverterResources.cs" />
     <Compile Include="Converters\BoolInverseConverter.cs" />
-    <Compile Include="Converters\BoolToTestResultColorConverter.cs" />
-    <Compile Include="Converters\BoolToTestResultConverter.cs" />
+    <Compile Include="Converters\TestResultColorConverter.cs" />
+    <Compile Include="Converters\TestResultConverter.cs" />
     <Compile Include="TestResultsPage.xaml.cs">
       <DependentUpon>TestResultsPage.xaml</DependentUpon>
     </Compile>

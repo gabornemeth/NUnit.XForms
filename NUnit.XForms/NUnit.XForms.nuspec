@@ -11,7 +11,7 @@
 <!--    <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>First open source version.</releaseNotes>
+    <releaseNotes>Support Ignore attribute for tests.</releaseNotes>
     <copyright>Copyright - Gabor Nemeth, 2015</copyright>
     <tags>nunit xamarin forms</tags>
   </metadata>

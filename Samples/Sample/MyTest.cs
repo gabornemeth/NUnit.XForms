@@ -27,6 +27,13 @@ namespace Sample
         }
 
         [Test]
+        [Ignore("Ignore test")]
+        public void Ignore()
+        {
+            Assert.True(false);
+        }
+
+        [Test]
         public async Task Async()
         {
             var watch = new Stopwatch();

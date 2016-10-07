@@ -12,8 +12,8 @@
             <ViewCell.View>
               <StackLayout Orientation="Vertical">
                 <Label Text="{Binding Name}" HorizontalOptions="FillAndExpand" />
-                <Label Text="{Binding Success, Converter={x:Static common:ConverterResources.BoolToTestResultConverter}}"
-                       TextColor="{Binding Success, Converter={x:Static common:ConverterResources.BoolToTestResultColorConverter}}"/>
+                <Label Text="{Binding Success, Converter={x:Static common:ConverterResources.TestResultConverter}}"
+                       TextColor="{Binding Success, Converter={x:Static common:ConverterResources.TestResultColorConverter}}"/>
                 <Label Text="{Binding Details}" />
               </StackLayout>
             </ViewCell.View>

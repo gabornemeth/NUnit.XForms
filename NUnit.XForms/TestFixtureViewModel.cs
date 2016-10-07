@@ -93,7 +93,7 @@ namespace NUnit.XForms
             }
             catch (Exception ex)
             {
-                Results.Add(new TestResult { Details = TestHelper.GetExceptionDetails(ex), Name = this.Name, Success = false });
+                Results.Add(new TestResultInfo { Details = TestHelper.GetExceptionDetails(ex), Name = this.Name, Success = TestResult.Fail });
             }
         }
 

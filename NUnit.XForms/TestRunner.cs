@@ -26,7 +26,7 @@ namespace NUnit.XForms
         /// <summary>
         /// Results of test run
         /// </summary>
-        public List<TestResult> Results { get; private set; }
+        public List<TestResultInfo> Results { get; private set; }
 
         /// <summary>
         /// ctor.
@@ -34,7 +34,7 @@ namespace NUnit.XForms
         public TestRunner()
         {
             Fixtures = new List<TestFixture>();
-            Results = new List<TestResult>(); // initialize results;
+            Results = new List<TestResultInfo>(); // initialize results;
         }
 
         /// <summary>

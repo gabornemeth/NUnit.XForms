@@ -22,7 +22,7 @@ namespace NUnit.XForms
         public MethodInfo Method { get; private set; }
         private readonly TestFixture _fixture;
 
-        public TestResult Result { get; private set; }
+        public TestResultInfo Result { get; private set; }
 
         /// <summary>
         /// ctor.
@@ -36,7 +36,7 @@ namespace NUnit.XForms
         }
 
         /// <summary>
-        /// Teszteset végrehajtása
+        /// Running test case
         /// </summary>
         public void Run()
         {
@@ -44,23 +44,32 @@ namespace NUnit.XForms
             var tearDown = TestHelper.GetFirstMethod(_fixture.Type, attribute => attribute.AttributeType.FullName == TestAttributes.TearDown);
             var obj = _fixture.Instance;
 
-            Result = new TestResult { Name = Method.Name };
-            // teszteset végrehajtása
+            Result = new TestResultInfo { Name = Method.Name };
             try
             {
                 Debug.WriteLine(Method.Name + " started.");
-                if (setUp != null)
-                    setUp.Invoke(obj, null);
-                Invoke(Method, obj);
-                if (tearDown != null)
-                    tearDown.Invoke(obj, null);
+                var ignoreAttribute = Method.GetAttribute(TestAttributes.Ignore);
+                if (ignoreAttribute != null)
+                {
+                    Result.Success = TestResult.Ignored;
+                    Result.Details = "Ignored due to: " + ignoreAttribute.ConstructorArguments[0].Value;
+                    Debug.WriteLine(Method.Name + " ignored.");
+                }
+                else
+                {
+                    if (setUp != null)
+                        setUp.Invoke(obj, null);
+                    Invoke(Method, obj);
+                    if (tearDown != null)
+                        tearDown.Invoke(obj, null);
 
-                Result.Success = true;
-                Debug.WriteLine(Method.Name + " passed.");
+                    Result.Success = TestResult.Success;
+                    Debug.WriteLine(Method.Name + " passed.");
+                }
             }
             catch (Exception ex)
             {
-                Result.Success = false;
+                Result.Success = TestResult.Fail;
                 Result.Details = TestHelper.GetExceptionDetails(ex);
                 Debug.WriteLine(Method.Name + " failed.");
             }
