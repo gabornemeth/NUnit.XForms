@@ -12,7 +12,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>Support Ignore attribute for tests.</releaseNotes>
-    <copyright>Copyright - Gabor Nemeth, 2015</copyright>
+    <copyright>Copyright - Gabor Nemeth, 2015-2016</copyright>
     <tags>nunit xamarin forms</tags>
   </metadata>
 </package>
