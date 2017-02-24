@@ -17,7 +17,7 @@ namespace Sample.Android
             base.OnCreate(bundle);
 
             Xamarin.Forms.Forms.Init(this, bundle);
-            LoadApplication(new MyTestApp());
+            LoadApplication(new AndroidTestApp());
         }
     }
 }

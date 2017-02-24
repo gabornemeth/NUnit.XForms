@@ -59,18 +59,21 @@ namespace NUnit.XForms
         {
             var sb = new StringBuilder();
             sb.Append(_fixture.Type.Name);
-            // konstruktor paramétereit is felsoroljuk
-            var constructorArguments = _fixture.TestFixtureAttribute.ConstructorArguments;
-            if (constructorArguments != null)
+            if (_fixture.TestFixtureAttribute != null)
             {
-                for (var i = 0; i < constructorArguments.Count; i++)
+                // parameters of constructor also matter
+                var constructorArguments = _fixture.TestFixtureAttribute.ConstructorArguments;
+                if (constructorArguments != null)
                 {
-                    var values =
-                        (constructorArguments[i].Value as IEnumerable<CustomAttributeTypedArgument>).ToArray();
-                    sb.Append(i == 0 ? " (" : ", ");
-                    sb.Append(values[0].Value);
-                    if (i == constructorArguments.Count - 1)
-                        sb.Append(")");
+                    for (var i = 0; i < constructorArguments.Count; i++)
+                    {
+                        var values =
+                            (constructorArguments[i].Value as IEnumerable<CustomAttributeTypedArgument>).ToArray();
+                        sb.Append(i == 0 ? " (" : ", ");
+                        sb.Append(values[0].Value);
+                        if (i == constructorArguments.Count - 1)
+                            sb.Append(")");
+                    }
                 }
             }
 

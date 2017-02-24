@@ -18,6 +18,9 @@ namespace NUnit.XForms
             Results.Clear();
             foreach (TestFixtureViewModel fixture in _fixtures)
             {
+                if (fixture.IsSelected == false)
+                    continue;
+
                 await fixture.RunAsync();
                 foreach (var result in fixture.Results)
                 {

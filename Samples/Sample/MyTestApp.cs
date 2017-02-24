@@ -9,10 +9,15 @@ namespace Sample
         public MyTestApp()
         {
             var runner = new TestRunner();
-            runner.Add(typeof(MyTest));
+            AddTests(runner);
             var page = new TestRunnerPage(runner);
             page.Title = "XForms test runner";
             MainPage = new NavigationPage(page);
+        }
+
+        protected virtual void AddTests(TestRunner runner)
+        {
+            runner.Add(typeof(MyTest));
         }
     }
 }

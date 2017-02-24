@@ -4,21 +4,19 @@
 // Author:
 //    Gabor Nemeth (gabor.nemeth.dev@gmail.hu)
 //
-//    Copyright (C) 2015, Gabor Nemeth
+//    Copyright (C) 2017, Gabor Nemeth
 //
 
-//using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace NUnit.XForms
 {
     /// <summary>
-    /// Segédosztály a tesztek használatához
+    /// Helper class for discovering tests
     /// </summary>
     internal static class TestHelper
     {
@@ -39,10 +37,29 @@ namespace NUnit.XForms
         {
             foreach (var attribute in typeInfo.CustomAttributes)
             {
-                if (attribute.AttributeType.FullName == "NUnit.Framework.TestFixtureAttribute")// typeof(TestFixtureAttribute))
-                    yield return attribute; // van TestFixture attribute
+                if (attribute.AttributeType.FullName == TestAttributes.TestFixture)
+                    yield return attribute; // TestFixture attribute found
             }
         }
+
+        /// <summary>
+        /// Checks whether a type contains any tests.
+        /// </summary>
+        /// <param name="typeInfo"></param>
+        /// <returns></returns>
+        public static bool HasTests(TypeInfo typeInfo)
+        {
+            if (GetTestFixtureAttributes(typeInfo).Count() > 0)
+                return true;
+
+            var methods = typeInfo.DeclaredMethods;
+            var testMethods = GetMethods(typeInfo, attribute => attribute.AttributeType.FullName == TestAttributes.Test);
+            if (testMethods.Count() > 0)
+                return true;
+
+            return false;
+        }
+
 
         /// <summary>
         /// Finds the first method with a given attribute
@@ -74,7 +91,6 @@ namespace NUnit.XForms
                         yield return method;
                     }
                 }
-
             }
         }
 
@@ -98,7 +114,14 @@ namespace NUnit.XForms
 
         public static object CreateTestFixture(Type testType, CustomAttributeData testFixtureAttribute)
         {
-            if (testFixtureAttribute.ConstructorArguments != null && testFixtureAttribute.ConstructorArguments.Count > 0)
+            var testTypeInfo = testType.GetTypeInfo();
+            if (testTypeInfo.IsAbstract)
+                return null; // cannot instantiate abstract class
+
+            // check for constructor with parameters
+            if (testFixtureAttribute != null &&
+                testFixtureAttribute.ConstructorArguments != null &&
+                testFixtureAttribute.ConstructorArguments.Count > 0)
             {
                 var constructorArgs = (testFixtureAttribute.ConstructorArguments[0].Value as IEnumerable<CustomAttributeTypedArgument>).ToArray();
                 var args = new object[constructorArgs.Length];
@@ -109,16 +132,11 @@ namespace NUnit.XForms
                 return Activator.CreateInstance(testType, args);
             }
                 
-            return Activator.CreateInstance(testType); // paraméter nélküli construktor
+            return Activator.CreateInstance(testType); // parameterless constructor
         }
 
         public static void Invoke(MethodInfo methodInfo, object obj)
         {
-            if (obj != null)
-            {
-                
-            }
-
             if (methodInfo.ReturnParameter.ParameterType == typeof(void))
             {
                 methodInfo.Invoke(obj, null);
