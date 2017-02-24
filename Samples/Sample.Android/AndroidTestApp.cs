@@ -3,12 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using NUnit.XForms;
 
 namespace Sample
@@ -19,7 +13,7 @@ namespace Sample
         {
             base.AddTests(runner);
             // Add assembly containing FsUnit tests
-            runner.Add(typeof(FsUnitTests.Test).Assembly);
+            //runner.Add(typeof(FsUnitTests.Test).Assembly);
         }
     }
 }
